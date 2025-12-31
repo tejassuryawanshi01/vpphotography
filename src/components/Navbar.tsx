@@ -14,14 +14,38 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Find active section based on scroll position
+      const sections = navLinks.map((link) => link.href.substring(1));
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -35,7 +59,11 @@ export function Navbar() {
       }`}
     >
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#home" className="font-display text-2xl tracking-wider text-foreground">
+        <a 
+          href="#home" 
+          onClick={(e) => scrollToSection(e, "#home")}
+          className="font-display text-2xl tracking-wider text-foreground"
+        >
           VP<span className="text-primary"> Photography</span>
         </a>
 
@@ -45,7 +73,12 @@ export function Navbar() {
             <li key={link.name}>
               <a
                 href={link.href}
-                className="text-sm font-body text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wide uppercase"
+                onClick={(e) => scrollToSection(e, link.href)}
+                className={`text-sm font-body tracking-wide uppercase transition-colors duration-300 ${
+                  activeSection === link.href.substring(1)
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {link.name}
               </a>
@@ -81,8 +114,12 @@ export function Navbar() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-lg font-body text-foreground hover:text-primary transition-colors"
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className={`text-lg font-body transition-colors ${
+                      activeSection === link.href.substring(1)
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
                   >
                     {link.name}
                   </a>
