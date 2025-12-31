@@ -77,40 +77,69 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  },
+};
+
+const sectionReveal = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
   },
 };
 
 export function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 bg-card">
+    <section id="services" className="py-24 md:py-32 bg-card overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block"
+          >
             What We Offer
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
+          >
             Our <span className="italic text-primary">Services</span>
-          </h2>
-          <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-body text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
             Complete photography and graphic design solutions tailored to your needs.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Photography Services */}

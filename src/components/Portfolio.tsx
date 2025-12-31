@@ -32,36 +32,73 @@ const projects = [
   },
 ];
 
+const sectionReveal = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+  },
+};
+
+const imageReveal = {
+  hidden: { opacity: 0, scale: 0.9, y: 40 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+  },
+};
+
 export function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-background">
+    <section id="portfolio" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block"
+          >
             Our Recent Work
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
+          >
             Recent <span className="italic text-primary">Projects</span>
-          </h2>
-          <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-body text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
             A showcase of our finest work across product photography, event coverage,
             brand shoots, and graphic design projects.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Large Featured Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={imageReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             className="group relative lg:row-span-2 overflow-hidden"
           >
             <div className="relative h-full min-h-[400px] lg:min-h-full">
@@ -88,10 +125,11 @@ export function Portfolio() {
 
           {/* Wide Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            variants={imageReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1 }}
             className="group relative lg:col-span-2 overflow-hidden"
           >
             <div className="relative h-[300px]">
@@ -120,10 +158,11 @@ export function Portfolio() {
           {projects.slice(2).map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              variants={imageReveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: 0.15 + index * 0.1 }}
               className="group relative overflow-hidden"
             >
               <div className="relative h-[300px]">

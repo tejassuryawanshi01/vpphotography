@@ -78,9 +78,13 @@ export function Hero() {
       >
         <motion.a
           href="#services"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+          }}
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors cursor-pointer"
         >
           <span className="text-xs tracking-widest uppercase font-body">Scroll</span>
           <ArrowDown size={20} />
