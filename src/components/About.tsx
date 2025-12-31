@@ -8,17 +8,45 @@ const stats = [
   { icon: Star, value: "100%", label: "Client Satisfaction" },
 ];
 
+const slideInLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+  },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+  },
+};
+
+const statReveal = {
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+  },
+};
+
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32 bg-background">
+    <section id="about" className="py-24 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={slideInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block">
               About Us
@@ -57,19 +85,20 @@ export function About() {
 
           {/* Stats Grid */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-2 gap-6"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                variants={statReveal}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
                 className="bg-card border border-border p-8 text-center group hover:border-primary/50 transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">

@@ -40,35 +40,62 @@ export function Contact() {
     setFormData({ name: "", email: "", service: "", message: "" });
   };
 
+  const sectionReveal = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const } 
+    },
+  };
+
   return (
-    <section id="contact" className="py-24 md:py-32 bg-card">
+    <section id="contact" className="py-24 md:py-32 bg-card overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block"
+          >
             Get In Touch
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
+          >
             Contact <span className="italic text-primary">Us</span>
-          </h2>
-          <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-body text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
             If you are looking for photography or graphic design services, 
             feel free to contact us. We'd love to hear about your project.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
             className="bg-background border border-border p-8 md:p-10"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -158,19 +185,19 @@ export function Contact() {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const, delay: 0.2 }}
             className="space-y-6"
           >
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const, delay: 0.3 + index * 0.1 }}
                 className="bg-background border border-border p-6 group hover:border-primary/50 transition-all duration-500"
               >
                 <div className="flex items-start gap-4">
