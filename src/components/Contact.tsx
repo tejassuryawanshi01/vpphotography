@@ -1,29 +1,25 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 
 const contactInfo = [
   {
-    icon: MapPin,
-    title: "Visit Us",
-    details: ["123 Creative Avenue", "Los Angeles, CA 90012"],
-  },
-  {
     icon: Phone,
     title: "Call Us",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    details: ["+91 98765 43210"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["hello@lenscraft.studio", "bookings@lenscraft.studio"],
+    details: ["info@vpphotography.com"],
   },
   {
-    icon: Clock,
-    title: "Working Hours",
-    details: ["Mon - Fri: 9AM - 7PM", "Sat: 10AM - 4PM"],
+    icon: MessageCircle,
+    title: "WhatsApp",
+    details: ["+91 98765 43210"],
+    isWhatsApp: true,
   },
 ];
 
@@ -45,7 +41,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-background">
+    <section id="contact" className="py-24 md:py-32 bg-card">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -58,11 +54,11 @@ export function Contact() {
             Get In Touch
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-            Let's <span className="italic text-primary">Create</span> Together
+            Contact <span className="italic text-primary">Us</span>
           </h2>
           <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to bring your vision to life? Contact us today to discuss your
-            project and see how we can help.
+            If you are looking for photography or graphic design services, 
+            feel free to contact us. We'd love to hear about your project.
           </p>
         </motion.div>
 
@@ -73,7 +69,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-card border border-border p-8 md:p-10"
+            className="bg-background border border-border p-8 md:p-10"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -89,7 +85,7 @@ export function Contact() {
                     }
                     required
                     className="w-full bg-secondary border border-border px-4 py-3 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                 </div>
                 <div>
@@ -104,7 +100,7 @@ export function Contact() {
                     }
                     required
                     className="w-full bg-secondary border border-border px-4 py-3 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="your@email.com"
                   />
                 </div>
               </div>
@@ -122,11 +118,17 @@ export function Contact() {
                   className="w-full bg-secondary border border-border px-4 py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors"
                 >
                   <option value="">Select a service</option>
-                  <option value="photography">Photography</option>
-                  <option value="videography">Videography</option>
-                  <option value="cinematography">Cinematography</option>
-                  <option value="wedding">Wedding Coverage</option>
-                  <option value="corporate">Corporate</option>
+                  <option value="product-photography">Product & E-commerce Photography</option>
+                  <option value="portrait">Portrait & Personal Branding</option>
+                  <option value="event">Event Photography</option>
+                  <option value="food">Food & Restaurant Photography</option>
+                  <option value="real-estate">Real Estate & Interior Photography</option>
+                  <option value="fashion">Fashion & Creative Photography</option>
+                  <option value="logo-design">Logo & Brand Identity Design</option>
+                  <option value="social-media">Social Media Creatives</option>
+                  <option value="print-design">Posters, Flyers & Brochures</option>
+                  <option value="web-graphics">Website & Digital Graphics</option>
+                  <option value="packaging">Packaging & Print Design</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -149,7 +151,7 @@ export function Contact() {
 
               <Button variant="hero" size="xl" className="w-full gap-2">
                 <Send size={18} />
-                Send Message
+                Get in Touch
               </Button>
             </form>
           </motion.div>
@@ -160,7 +162,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="space-y-6"
           >
             {contactInfo.map((info, index) => (
               <motion.div
@@ -169,19 +171,35 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="bg-card border border-border p-6 group hover:border-primary/50 transition-all duration-500"
+                className="bg-background border border-border p-6 group hover:border-primary/50 transition-all duration-500"
               >
-                <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <info.icon className="w-6 h-6 text-primary" />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <info.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg text-foreground mb-1">
+                      {info.title}
+                    </h3>
+                    {info.details.map((detail) => (
+                      <p key={detail} className="font-body text-muted-foreground">
+                        {detail}
+                      </p>
+                    ))}
+                    {info.isWhatsApp && (
+                      <a
+                        href={`https://wa.me/919876543210`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-3"
+                      >
+                        <Button variant="heroOutline" size="sm">
+                          Chat on WhatsApp
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <h3 className="font-display text-lg text-foreground mb-2">
-                  {info.title}
-                </h3>
-                {info.details.map((detail) => (
-                  <p key={detail} className="font-body text-sm text-muted-foreground">
-                    {detail}
-                  </p>
-                ))}
               </motion.div>
             ))}
           </motion.div>

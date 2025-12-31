@@ -8,26 +8,26 @@ import portfolio4 from "@/assets/portfolio-4.jpg";
 const projects = [
   {
     image: portfolio1,
-    title: "Ethereal Portraits",
-    category: "Portrait Photography",
+    title: "Clothing Brand Shoot",
+    category: "Product Photography",
     size: "large",
   },
   {
     image: portfolio2,
-    title: "Golden Hour Love",
-    category: "Wedding Cinematography",
+    title: "Corporate Event Coverage",
+    category: "Event Photography",
     size: "wide",
   },
   {
     image: portfolio3,
-    title: "Luxury Timepieces",
-    category: "Product Photography",
+    title: "Personal Branding Session",
+    category: "Brand Shoots",
     size: "medium",
   },
   {
     image: portfolio4,
-    title: "Behind The Scenes",
-    category: "Film Production",
+    title: "Cafe Social Media Designs",
+    category: "Graphic Design",
     size: "medium",
   },
 ];
@@ -44,14 +44,14 @@ export function Portfolio() {
           className="text-center mb-16"
         >
           <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4 block">
-            Featured Work
+            Our Recent Work
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-            Our <span className="italic text-primary">Portfolio</span>
+            Recent <span className="italic text-primary">Projects</span>
           </h2>
           <p className="font-body text-muted-foreground text-lg max-w-2xl mx-auto">
-            A curated selection of our finest work across photography,
-            videography, and cinematography.
+            A showcase of our finest work across product photography, event coverage,
+            brand shoots, and graphic design projects.
           </p>
         </motion.div>
 
