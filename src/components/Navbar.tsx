@@ -36,7 +36,7 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#home" className="font-display text-2xl tracking-wider text-foreground">
-          LENS<span className="text-primary">CRAFT</span>
+          VP<span className="text-primary"> Photography</span>
         </a>
 
         {/* Desktop Nav */}

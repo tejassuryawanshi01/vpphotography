@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Play } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/hero-studio.jpg";
 
@@ -29,7 +29,7 @@ export function Hero() {
           className="mb-6"
         >
           <span className="text-primary font-body text-sm tracking-[0.3em] uppercase">
-            Visual Storytelling Studio
+            VP Photography & Graphics
           </span>
         </motion.div>
 
@@ -39,9 +39,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-foreground mb-6 leading-tight"
         >
-          Capturing Moments,
+          Professional Photography
           <br />
-          <span className="italic text-primary">Creating Art</span>
+          <span className="italic text-primary">& Graphic Design</span>
         </motion.h1>
 
         <motion.p
@@ -50,8 +50,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="font-body text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Premium photography, videography, and cinematography services that
-          transform your vision into timeless visual narratives.
+          Quality visuals for brands, businesses, events, and individuals.
+          We help you present yourself professionally.
         </motion.p>
 
         <motion.div
@@ -61,11 +61,10 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button variant="hero" size="xl">
-            View Our Work
+            View Portfolio
           </Button>
-          <Button variant="heroOutline" size="xl" className="gap-3">
-            <Play size={18} fill="currentColor" />
-            Watch Showreel
+          <Button variant="heroOutline" size="xl">
+            Contact Us
           </Button>
         </motion.div>
       </div>

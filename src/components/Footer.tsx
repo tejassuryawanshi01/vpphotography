@@ -10,33 +10,51 @@ const socialLinks = [
 
 const footerLinks = [
   {
-    title: "Services",
-    links: ["Photography", "Videography", "Cinematography", "Weddings", "Corporate"],
+    title: "Quick Links",
+    links: [
+      { name: "Home", href: "#home" },
+      { name: "Services", href: "#services" },
+      { name: "Portfolio", href: "#portfolio" },
+      { name: "About", href: "#about" },
+      { name: "Contact", href: "#contact" },
+    ],
   },
   {
-    title: "Company",
-    links: ["About Us", "Our Team", "Careers", "Press Kit"],
+    title: "Photography",
+    links: [
+      { name: "Product Photography", href: "#services" },
+      { name: "Portrait & Branding", href: "#services" },
+      { name: "Event Photography", href: "#services" },
+      { name: "Food Photography", href: "#services" },
+      { name: "Real Estate Photography", href: "#services" },
+    ],
   },
   {
-    title: "Support",
-    links: ["Contact", "FAQ", "Pricing", "Terms of Service", "Privacy Policy"],
+    title: "Graphic Design",
+    links: [
+      { name: "Logo & Brand Identity", href: "#services" },
+      { name: "Social Media Creatives", href: "#services" },
+      { name: "Print Design", href: "#services" },
+      { name: "Web Graphics", href: "#services" },
+      { name: "Packaging Design", href: "#services" },
+    ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-background border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="font-display text-2xl tracking-wider text-foreground mb-4 block">
-              LENS<span className="text-primary">CRAFT</span>
+              VP<span className="text-primary"> Photography</span>
             </a>
             <p className="font-body text-muted-foreground text-sm leading-relaxed mb-6 max-w-sm">
-              Premium visual storytelling studio specializing in photography,
-              videography, and cinematography. Transforming moments into
-              timeless art.
+              Professional photography and graphic design services focused on 
+              quality, clarity, and visual impact. We help individuals and 
+              businesses present themselves professionally.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -45,7 +63,7 @@ export function Footer() {
                   href={social.href}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  className="w-10 h-10 rounded-sm bg-card flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -60,12 +78,12 @@ export function Footer() {
               <h4 className="font-display text-foreground mb-4">{column.title}</h4>
               <ul className="space-y-3">
                 {column.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.name}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
-                      {link}
+                      {link.name}
                     </a>
                   </li>
                 ))}
@@ -76,11 +94,10 @@ export function Footer() {
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-body text-sm text-muted-foreground">
-            © {new Date().getFullYear()} LensCraft Studios. All rights reserved.
+            © {new Date().getFullYear()} VP Photography & Graphics. All rights reserved.
           </p>
           <p className="font-body text-sm text-muted-foreground">
-            Designed with{" "}
-            <span className="text-primary">♥</span> in Los Angeles
+            Quality visuals for your success
           </p>
         </div>
       </div>
