@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
+import { BookingDialog } from "./BookingDialog";
 import heroImage from "@/assets/hero-studio.jpg";
 
 export function Hero() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
+    <>
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -60,8 +65,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="hero" size="xl">
-            View Portfolio
+          <Button variant="hero" size="xl" onClick={() => setIsBookingOpen(true)}>
+            Book Now
           </Button>
           <Button variant="heroOutline" size="xl">
             Contact Us
@@ -91,5 +96,8 @@ export function Hero() {
         </motion.a>
       </motion.div>
     </section>
+
+    <BookingDialog isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+    </>
   );
 }

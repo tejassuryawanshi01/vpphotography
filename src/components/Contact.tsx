@@ -8,17 +8,17 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+91 98765 43210"],
+    details: ["+91 9423543739"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@vpphotography.com"],
+    details: ["vpphotography3739@gmail.com"],
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    details: ["+91 98765 43210"],
+    details: ["+91 9423543739"],
     isWhatsApp: true,
   },
 ];
@@ -145,6 +145,9 @@ export function Contact() {
                   className="w-full bg-secondary border border-border px-4 py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors"
                 >
                   <option value="">Select a service</option>
+                  <option value="wedding">Wedding Package</option>
+                  <option value="album">Album Design & Editing</option>
+                  <option value="printing">Printing Services</option>
                   <option value="product-photography">Product & E-commerce Photography</option>
                   <option value="portrait">Portrait & Personal Branding</option>
                   <option value="event">Event Photography</option>
@@ -156,6 +159,7 @@ export function Contact() {
                   <option value="print-design">Posters, Flyers & Brochures</option>
                   <option value="web-graphics">Website & Digital Graphics</option>
                   <option value="packaging">Packaging & Print Design</option>
+                  <option value="all-photography">All Types of Photography</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -215,7 +219,7 @@ export function Contact() {
                     ))}
                     {info.isWhatsApp && (
                       <a
-                        href={`https://wa.me/919876543210`}
+                        href={`https://wa.me/919423543739`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block mt-3"

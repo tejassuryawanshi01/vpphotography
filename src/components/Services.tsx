@@ -3,6 +3,11 @@ import { Camera, Image, Palette, Package, Globe, Sparkles, Users, Utensils, Buil
 
 const photographyServices = [
   {
+    icon: Users,
+    title: "Wedding Package",
+    description: "Complete wedding photography coverage capturing every precious moment of your special day.",
+  },
+  {
     icon: Package,
     title: "Product & E-commerce",
     description: "High-quality product images that boost sales and showcase your items professionally.",
@@ -37,9 +42,24 @@ const photographyServices = [
     title: "Photo Editing & Retouching",
     description: "Professional post-processing to perfect and enhance your images.",
   },
+  {
+    icon: Camera,
+    title: "All Types of Photography",
+    description: "From candid shots to professional setups, we cover all your photography needs.",
+  },
 ];
 
 const designServices = [
+  {
+    icon: Image,
+    title: "Album Design & Editing",
+    description: "Beautiful photo album designs with professional editing for weddings and events.",
+  },
+  {
+    icon: Layers,
+    title: "Printing Services",
+    description: "High-quality printing for albums, posters, banners, and all your visual materials.",
+  },
   {
     icon: PenTool,
     title: "Logo & Brand Identity",
