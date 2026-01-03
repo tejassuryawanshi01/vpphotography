@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Instagram, X, Camera, Palette, Heart, BookOpen, Printer } from "lucide-react";
+import { Phone, Instagram, X, Camera, Palette, Heart, BookOpen, Printer, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface BookingDialogProps {
@@ -39,8 +39,16 @@ export function BookingDialog({ isOpen, onClose }: BookingDialogProps) {
     resetDialog();
   };
 
+  const handleWhatsAppClick = () => {
+    const serviceName = services.find(s => s.id === selectedService)?.name || "General Inquiry";
+    const message = encodeURIComponent(`Hi! I'm interested in your ${serviceName} service. Please provide more details.`);
+    window.open(`https://wa.me/919423543739?text=${message}`, "_blank");
+    onClose();
+    resetDialog();
+  };
+
   const handleInstagramClick = () => {
-    window.open("https://www.instagram.com/vpphotography3739", "_blank");
+    window.open("https://www.instagram.com/vp_photography_and_graphics?igsh=MXUzejl1MjJ2ZDVmNw==", "_blank");
     onClose();
     resetDialog();
   };
@@ -155,6 +163,16 @@ export function BookingDialog({ isOpen, onClose }: BookingDialogProps) {
                     >
                       <Phone size={20} />
                       Call Us
+                    </Button>
+
+                    <Button
+                      onClick={handleWhatsAppClick}
+                      variant="hero"
+                      size="xl"
+                      className="w-full gap-3"
+                    >
+                      <MessageCircle size={20} />
+                      WhatsApp
                     </Button>
 
                     <Button

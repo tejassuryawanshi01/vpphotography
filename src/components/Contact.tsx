@@ -3,6 +3,7 @@ import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactInfo = [
   {
@@ -30,14 +31,49 @@ export function Contact() {
     service: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", service: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-notification", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          message: formData.message,
+          notificationType: "whatsapp",
+        },
+      });
+
+      if (error) throw error;
+
+      if (data?.redirectUrl) {
+        window.open(data.redirectUrl, "_blank");
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Opening WhatsApp to complete your inquiry.",
+      });
+      setFormData({ name: "", email: "", service: "", message: "" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      // Fallback to direct WhatsApp
+      const whatsappMessage = encodeURIComponent(
+        `Hi! I'm ${formData.name}.\nEmail: ${formData.email}\nService: ${formData.service}\n\n${formData.message}`
+      );
+      window.open(`https://wa.me/919423543739?text=${whatsappMessage}`, "_blank");
+      toast({
+        title: "Redirecting to WhatsApp",
+        description: "Please send your message directly via WhatsApp.",
+      });
+      setFormData({ name: "", email: "", service: "", message: "" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const sectionReveal = {
@@ -180,9 +216,9 @@ export function Contact() {
                 />
               </div>
 
-              <Button variant="hero" size="xl" className="w-full gap-2">
+              <Button variant="hero" size="xl" className="w-full gap-2" disabled={isSubmitting}>
                 <Send size={18} />
-                Get in Touch
+                {isSubmitting ? "Sending..." : "Send via WhatsApp"}
               </Button>
             </form>
           </motion.div>
