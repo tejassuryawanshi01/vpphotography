@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Award, Users, Clock, Star } from "lucide-react";
 
 const stats = [
-  { icon: Award, value: "10+", label: "Years Experience" },
-  { icon: Users, value: "500+", label: "Happy Clients" },
+  { icon: Award, value: "5+", label: "Years Experience" },
+  { icon: Users, value: "5000+", label: "Happy Clients" },
   { icon: Clock, value: "1000+", label: "Projects Completed" },
-  { icon: Star, value: "100%", label: "Client Satisfaction" },
+  { icon: Star, value: "99.99%", label: "Client Satisfaction" },
 ];
 
 const slideInLeft = {

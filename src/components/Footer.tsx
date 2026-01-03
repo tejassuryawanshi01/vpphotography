@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Instagram, Youtube, Facebook, Twitter } from "lucide-react";
 
 const socialLinks = [
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/vp_photography_and_graphics?igsh=MXUzejl1MjJ2ZDVmNw==", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
