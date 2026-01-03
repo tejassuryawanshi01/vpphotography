@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, X, MessageCircle, Camera, Palette, Heart, BookOpen, Printer } from "lucide-react";
+import { Phone, X, MessageCircle, Camera, Palette, Heart, BookOpen, Printer, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface ContactDialogProps {
@@ -42,6 +42,11 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     const serviceName = services.find(s => s.id === selectedService)?.name || "General Inquiry";
     const message = encodeURIComponent(`Hi! I'm interested in your ${serviceName} service. Please provide more details.`);
     window.open(`https://wa.me/919423543739?text=${message}`, "_blank");
+    handleClose();
+  };
+
+  const handleInstagramClick = () => {
+    window.open("https://www.instagram.com/vp_photography_and_graphics?igsh=MXUzejl1MjJ2ZDVmNw==", "_blank");
     handleClose();
   };
 
@@ -169,6 +174,18 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                       >
                         <MessageCircle size={20} />
                         WhatsApp
+                      </Button>
+                    </motion.div>
+
+                    <motion.div whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.02 }}>
+                      <Button
+                        onClick={handleInstagramClick}
+                        variant="hero"
+                        size="xl"
+                        className="w-full gap-3"
+                      >
+                        <Instagram size={20} />
+                        Instagram
                       </Button>
                     </motion.div>
                   </div>
