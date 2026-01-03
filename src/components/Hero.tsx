@@ -2,11 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
-import { BookingDialog } from "./BookingDialog";
+import { ContactDialog } from "./ContactDialog";
 import heroImage from "@/assets/hero-studio.jpg";
 
 export function Hero() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <>
@@ -65,12 +65,16 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="hero" size="xl" onClick={() => setIsBookingOpen(true)}>
-            Book Now
-          </Button>
-          <Button variant="heroOutline" size="xl">
-            Contact Us
-          </Button>
+          <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.02 }}>
+            <Button variant="hero" size="xl" onClick={() => setIsContactOpen(true)}>
+              Book Now
+            </Button>
+          </motion.div>
+          <motion.div whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.02 }}>
+            <Button variant="heroOutline" size="xl" onClick={() => setIsContactOpen(true)}>
+              Contact Us
+            </Button>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -97,7 +101,7 @@ export function Hero() {
       </motion.div>
     </section>
 
-    <BookingDialog isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+    <ContactDialog isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
 }
