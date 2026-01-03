@@ -28,7 +28,6 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,7 +41,6 @@ export function Contact() {
         body: {
           name: formData.name,
           email: formData.email,
-          service: formData.service,
           message: formData.message,
           notificationType: "whatsapp",
         },
@@ -58,19 +56,19 @@ export function Contact() {
         title: "Message Sent!",
         description: "Opening WhatsApp to complete your inquiry.",
       });
-      setFormData({ name: "", email: "", service: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Error sending message:", error);
       // Fallback to direct WhatsApp
       const whatsappMessage = encodeURIComponent(
-        `Hi! I'm ${formData.name}.\nEmail: ${formData.email}\nService: ${formData.service}\n\n${formData.message}`
+        `Hi! I'm ${formData.name}.\nEmail: ${formData.email}\n\n${formData.message}`
       );
       window.open(`https://wa.me/919423543739?text=${whatsappMessage}`, "_blank");
       toast({
         title: "Redirecting to WhatsApp",
         description: "Please send your message directly via WhatsApp.",
       });
-      setFormData({ name: "", email: "", service: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
     } finally {
       setIsSubmitting(false);
     }
@@ -168,37 +166,6 @@ export function Contact() {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-body text-sm text-foreground mb-2">
-                  Service Interested In
-                </label>
-                <select
-                  value={formData.service}
-                  onChange={(e) =>
-                    setFormData({ ...formData, service: e.target.value })
-                  }
-                  required
-                  className="w-full bg-secondary border border-border px-4 py-3 font-body text-foreground focus:outline-none focus:border-primary transition-colors"
-                >
-                  <option value="">Select a service</option>
-                  <option value="wedding">Wedding Package</option>
-                  <option value="album">Album Design & Editing</option>
-                  <option value="printing">Printing Services</option>
-                  <option value="product-photography">Product & E-commerce Photography</option>
-                  <option value="portrait">Portrait & Personal Branding</option>
-                  <option value="event">Event Photography</option>
-                  <option value="food">Food & Restaurant Photography</option>
-                  <option value="real-estate">Real Estate & Interior Photography</option>
-                  <option value="fashion">Fashion & Creative Photography</option>
-                  <option value="logo-design">Logo & Brand Identity Design</option>
-                  <option value="social-media">Social Media Creatives</option>
-                  <option value="print-design">Posters, Flyers & Brochures</option>
-                  <option value="web-graphics">Website & Digital Graphics</option>
-                  <option value="packaging">Packaging & Print Design</option>
-                  <option value="all-photography">All Types of Photography</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
 
               <div>
                 <label className="block font-body text-sm text-foreground mb-2">
