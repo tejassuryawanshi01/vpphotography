@@ -87,6 +87,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
             {/* Close Button */}
             <motion.button
               onClick={handleClose}
+              aria-label="Close"
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.1 }}
               className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"

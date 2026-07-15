@@ -308,9 +308,9 @@ export function AlbumLab() {
                 <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                   <album.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h4 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                <h3 className="font-display text-lg text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                   {album.title}
-                </h4>
+                </h3>
                 <p className="font-body text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
                   {album.description}
                 </p>
