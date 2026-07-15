@@ -239,7 +239,7 @@ export function AlbumLab() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
           >
-            Film & Flare{" "}
+            Frame & Flare{" "}
             <span className="italic text-primary">Albums</span>
           </motion.h2>
           <motion.p
@@ -249,7 +249,7 @@ export function AlbumLab() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-body text-muted-foreground text-lg max-w-2xl mx-auto mb-4"
           >
-            A creative collaboration between VP Photography and Film & Flare Albums By PraVish.
+            A creative collaboration between VP Photography and Frame & Flare Albums By PraVish.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -283,7 +283,7 @@ export function AlbumLab() {
           <div className="flex items-center gap-4 px-8 py-5 border border-primary/30 bg-primary/5">
             <BookHeart className="w-8 h-8 text-primary" />
             <div className="text-left">
-              <p className="font-display text-lg text-foreground">Film & Flare Albums</p>
+              <p className="font-display text-lg text-foreground">Frame & Flare Albums</p>
               <p className="font-body text-xs text-muted-foreground uppercase tracking-wider">By PraVish</p>
             </div>
           </div>
@@ -356,7 +356,7 @@ export function AlbumLab() {
                     <selectedAlbum.icon className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-primary font-body text-xs tracking-[0.3em] uppercase">
-                    Film & Flare × VP
+                    Frame & Flare × VP
                   </span>
                 </div>
                 <DialogTitle className="font-display text-3xl text-foreground text-left">
